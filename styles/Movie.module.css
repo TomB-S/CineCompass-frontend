@@ -4,18 +4,22 @@
 	justify-content: flex-start;
 	width: 220px;
 	margin: 20px;
+	border: 8px solid #AE6DAB;
 }
 
+
 .image {
-	width: 220px;
-	border-radius: 10px 10px 0px 0px;
+	width: 200px;
+	border-radius: 20px 10px 0px 0px;
+	margin-top: 10px;
 }
 
 .textContainer {
 	display: flex;
 	flex-direction: column;
-	height: 230px;
-	margin: 10px 0px 10px 00px;
+	margin: 10px 0px 5px 0px;
+	padding: 5px;
+	background-color: #EFEFDC;
 }
 
 .name {
@@ -25,10 +29,15 @@
 .description {
 	font-weight: 300;
 	font-size: 14px;
+	
 }
 
 .iconContainer {
 	display: flex;
 	flex-direction: column;
+	align-self: flex-end;
+	margin-top: auto; 
 	font-size: 12px;
+	margin-top: 20px;
+	background-color: rebeccapurple;
 }
