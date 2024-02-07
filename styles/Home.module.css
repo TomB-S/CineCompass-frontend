@@ -10,7 +10,7 @@
 	justify-content: space-between;
 	width: 100vw;
 	height: 60px;
-	background-color: #021334;
+	background-image: linear-gradient(to right top, #9d2c7b, #a24082, #a65089, #aa6090, #ae6f97, #b67fa3, #bd8eae, #c59eb9, #d3b3cb, #e1c9dd, #f0dfee, #fff5ff);
 	color: white;
 	padding: 0px 20px 0px 20px;
 }
@@ -25,11 +25,21 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 100%;
 }
 
-.logo {
+.Cinelogo {
 	margin-left: 20px;
-	width: 150px;
+	width: 100px;
+	height: 90%;
+	opacity: 0.7;
+}
+
+.Doglogo {
+	margin-left: 20px;
+	width: 100px;
+	height: 150%;
+	opacity: 0.7;
 }
 
 .moviesContainer {
