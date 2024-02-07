@@ -30,22 +30,6 @@ function Home() {
         });
     }, []);
 
-
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/movies')
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     const formattedData = data.movies.map((movie) => {
-  //       const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-  //       return { title: movie.title, poster, voteAverage: movie.vote_average, voteCount: movie.vote_count, overview};
-  //     })
-  //     setMoviesData(formattedData)
-  //   })
-  //   .catch(error => {
-  //     console.log('Erreur lors de la récupération des données', error);
-  //   })
-  // }, []);
-
   // Liked movies (inverse data flow)
   const updateLikedMovies = (movieTitle) => {
     if (likedMovies.find(movie => movie === movieTitle)) {
