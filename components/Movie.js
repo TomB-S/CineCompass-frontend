@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from '../styles/Movie.module.css';
 import { HeartFilled, HeartOutlined, StarOutlined, StarFilled, VideoCameraAddOutlined, VideoCameraFilled } from '@ant-design/icons';
-import { Popover } from 'antd';
+import { Popover, Card } from 'antd';
 
 function Movie(props) {
   const [watchCount, setWatchCount] = useState(0);
@@ -49,6 +49,7 @@ for (let i = 0; i < 10; i++) {
 }
 
   return (
+    <Card hoverable={true} >
     <div className={styles.card}>
       <Popover title={props.title} placement='right' content={`https://www.themoviedb.org/movie/${props.title}`}>
         <img className={styles.image} src={props.poster} alt={props.title}/>
@@ -66,6 +67,8 @@ for (let i = 0; i < 10; i++) {
         </div>
       </div>
     </div>
+    </Card>
+    
   );
 }
 
