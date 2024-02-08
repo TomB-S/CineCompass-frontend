@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Movie.module.css';
+import { HeartFilled, HeartOutlined, StarOutlined, StarFilled, VideoCameraAddOutlined, VideoCameraFilled } from '@ant-design/icons';
 
 function Movie(props) {
   const [watchCount, setWatchCount] = useState(0);
@@ -10,40 +11,43 @@ function Movie(props) {
   // Average evaluation
   const stars = [];
   for (let i = 0; i < 10; i++) {
-    let style = {};
-    if (i < props.voteAverage - 1) {
-      style = { 'color': '#f1c40f' };
-    }
-    stars.push(<FontAwesomeIcon key={i} icon={faStar} style={style} />);
+    const generalStar = i < props.voteAverage - 1 ? (
+      <StarFilled key={i} style={{ color: '#f1c40f' }} />
+    ) : (
+      <StarOutlined key={i} style={{ color: '#f1c40f' }} />
+    );
+    stars.push(generalStar);
   }
 
-  // Watch movie
+  // Saved movies
   const handleWatchMovie = () => {
-    setWatchCount(watchCount + 1);
+    setWatchCount(watchCount + 1)
   };
-  let videoIconStyle = { 'cursor': 'pointer' };
-  if (watchCount > 0) {
-    videoIconStyle = { 'color': '#e74c3c', 'cursor': 'pointer' };
-  }
+  const cameraIcon = watchCount > 0 ? (
+    <VideoCameraFilled style={{ color: '#e74c3c', cursor: 'pointer'}} onClick={() => handleWatchMovie()} />
+  ) : (
+    <VideoCameraAddOutlined onClick={() => handleWatchMovie()} style={{'cursor': 'pointer'}}/>
 
-  // Like movie
+  );
+  
+  // Liked movie
   const handleLikeMovie = () => {
     props.updateLikedMovies(props.title);
   };
-  let heartIconStyle = { 'cursor': 'pointer' };
-  if (props.isLiked) {
-    heartIconStyle = { 'color': '#e74c3c', 'cursor': 'pointer' };
-  }
+  const heartIcon = props.isLiked ?  <HeartFilled style={{ color: '#e74c3c', cursor: 'pointer' }} onClick={handleLikeMovie} /> : <HeartOutlined style={{ color: '#e74c3c', cursor: 'pointer' }} onClick={handleLikeMovie} />;
 
-  // Personal note
-  const personalStars = [];
-  for (let i = 0; i < 10; i++) {
-    let style = { 'cursor': 'pointer' };
-    if (i < personalNote) {
-      style = { 'color': '#2196f3', 'cursor': 'pointer' };
-    }
-    personalStars.push(<FontAwesomeIcon key={i} icon={faStar} onClick={() => setPersonalNote(i + 1)} style={style} className="note" />);
-  }
+
+ // Personal note
+const personalStars = [];
+for (let i = 0; i < 10; i++) {
+  const starIcon = i < personalNote ? 
+  (
+    <StarFilled key={i} onClick={() => setPersonalNote(i + 1)}  style={{ color: 'blue', cursor: 'pointer' }} />
+  ) : (
+    <StarOutlined key={i} onClick={() => setPersonalNote(i + 1)}style={{ color: 'blue', cursor: 'pointer' }} />
+  );
+  personalStars.push(starIcon);
+}
 
   return (
     <div className={styles.card}>
@@ -56,8 +60,8 @@ function Movie(props) {
         <div className={styles.iconContainer}>
           <span className={styles.vote}>{stars} ({props.voteCount})</span>
           <span>{personalStars} ({personalNote})</span>
-          <span><FontAwesomeIcon icon={faVideo} onClick={() => handleWatchMovie()} style={videoIconStyle} className="watch" /> ({watchCount})</span>
-          <span><FontAwesomeIcon icon={faHeart} onClick={() => handleLikeMovie()} style={heartIconStyle} className="like" /></span>
+          <span> {cameraIcon} {watchCount})</span>
+          <span>{heartIcon}</span>
         </div>
       </div>
     </div>
