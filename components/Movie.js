@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faStar, faVideo } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/Movie.module.css';
 import { HeartFilled, HeartOutlined, StarOutlined, StarFilled, VideoCameraAddOutlined, VideoCameraFilled } from '@ant-design/icons';
+import { Popover } from 'antd';
 
 function Movie(props) {
   const [watchCount, setWatchCount] = useState(0);
@@ -51,7 +50,9 @@ for (let i = 0; i < 10; i++) {
 
   return (
     <div className={styles.card}>
-      <img className={styles.image} src={props.poster} alt={props.title} />
+      <Popover title={props.title} placement='right' content={`https://www.themoviedb.org/movie/${props.title}`}>
+        <img className={styles.image} src={props.poster} alt={props.title}/>
+      </Popover>
       <div >
         <div className={styles.textContainer}>
           <span className={styles.name}>{props.title}</span>

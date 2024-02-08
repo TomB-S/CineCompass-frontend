@@ -12,7 +12,11 @@
 	width: 200px;
 	border-radius: 20px 10px 0px 0px;
 	margin-top: 10px;
-}
+	transition: transform 0.3s ease-in-out;
+} 
+.image:hover {
+	transform: scale(1.5);
+  }
 
 .textContainer {
 	display: flex;
